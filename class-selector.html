@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selector</title>
+  <script src="jquery-3.5.1.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".odd").css("background-color","lightblue");
+      $(".even").css("background-color","lightgray");
+    });
+  </script>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th>
+    </tr>
+    <tr class="odd">
+      <td>1</td><td>James</td><td>Smith</td><td>john@test.com</td>
+    </tr>
+    <tr class="even">
+      <td>2</td><td>Nancy</td><td>Turner</td><td>nancy@test.com</td>
+    </tr>
+    <tr class="odd">
+      <td>3</td><td>John</td><td>White</td><td>john@test.com</td>
+    </tr>
+    <tr class="even">
+      <td>4</td><td>Joseph</td><td>Allen</td><td>joseph@test.com</td>
+    </tr>
+    <tr class="odd">
+      <td>5</td><td>Mary</td><td>Brown</td><td>mary@test.com</td>
+    </tr>
+  </table>
+</body>
+</html>

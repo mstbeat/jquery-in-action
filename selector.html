@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selectors</title>
+  <script src="jquery-3.5.1.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#btnFirst").click(function(){
+        $(".subject").css("color","blue");
+      });
+    });
+  </script>
+</head>
+<body>
+  <ol class="subject">
+    <li id="sub1">English</li>
+    <li id="sub2">Mathematics</li>
+    <li id="sub3">Physics</li>
+    <li id="sub4">Chemistry</li>
+    <li id="sub5">History</li>
+    <li id="sub6">Geography</li>
+  </ol>
+  <ul id="department">
+    <li>Sales</li>
+    <li>HR</li>
+    <li>Marketing</li>
+    <li>Accounts</li>
+  </ul>
+  <p id="firstPara">First Paragraph. First Paragraph. First Paragraph. First Paragraph. First Paragraph.</p>
+  <p od="secondPara">Second Paragraph. Second Paragraph. Second Paragraph. Second Paragraph.</p>
+  <button id="btnFirst">First Button</button>
+  <button id="btnSecond">Second Button</button>
+</body>
+</html>
