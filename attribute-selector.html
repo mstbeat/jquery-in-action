@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selector</title>
+  <script src="jquery-3.5.1.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#btnClick").click(function(){
+      $("p[class!=paras]").css("color","red")
+    });
+  });
+  </script>
+</head>
+<body>
+  <table>
+    <p id="first-para" class="paras">First Paragraph. First Paragraph.</p>
+    <p id="second-para" class="paras">Second Paragraph. Second Paragraph.</p>
+    <p id="third-para">Third Paragraph. Third Paragraph.</p>
+    <div id="firstDiv" class="divs">First div</div>
+    <div id="secondDiv" class="divs">Second div</div>
+    <div id="thirdDiv " class="divs">Third div</div>
+    <div id="fourthDiv" class="divs">Fourth div</div>
+    <div id="fifthDiv">Fifth div</div><br>
+    <button id="btnClick">Click!</button>
+  </table>
+</body>
+</html>
