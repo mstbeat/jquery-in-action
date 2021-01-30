@@ -8,7 +8,7 @@
   <script type="text/javascript">
   $(document).ready(function(){
     $("#btnClick").click(function(){
-      $("p[class!=paras]").css("color","red")
+      $("[id~=first]").css("color","red")
     });
   });
   </script>
@@ -20,7 +20,7 @@
     <p id="third-para">Third Paragraph. Third Paragraph.</p>
     <div id="firstDiv" class="divs">First div</div>
     <div id="secondDiv" class="divs">Second div</div>
-    <div id="thirdDiv " class="divs">Third div</div>
+    <div id="thirdDiv" class="divs">Third div</div>
     <div id="fourthDiv" class="divs">Fourth div</div>
     <div id="fifthDiv">Fifth div</div><br>
     <button id="btnClick">Click!</button>

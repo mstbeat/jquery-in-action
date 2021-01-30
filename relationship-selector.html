@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selector</title>
+  <style>
+    .style{
+        border:2px solid black;
+        width:35%;
+        height:100px;
+        padding:10px;
+        margin:10px;
+    }
+    p{
+        border:1px solid red;
+        background-color:pink;
+        width:80px;
+        height:80px;
+        float:left;
+        padding:5px;
+        margin:5px;
+    }
+    span{
+        border:1px solid blue;
+        background-color:lightblue;
+        width:40px;
+        height:40px;
+        float:left;
+        padding:5px;
+        margin:5px;
+    }
+    #first{
+        border:1px solid gray;
+        background-color:silver;
+        width:60px;
+        height:60px;
+        float:left;
+        padding:5px;
+        margin:5px;
+    }
+  </style>
+  <script src="jquery-3.5.1.min.js"></script>
+  <script type="text/javascrupt">
+  
+  </script>
+</head>
+<body>
+  <div id="main" class="style">
+    <p>Paragraph</p>
+    <span>Span</span>
+    <p>Paragraph</p>
+  </div>
+  <div id="sub" class="style">
+    <span>Span</span>
+    <div id="first">Div</div>
+    <p>Paragraph</p>
+    <div>
+      <span>Span</span>
+    </div>
+  </div><br>
+  <button id="btnClick">Click!</button>
+</body>
+</html>
