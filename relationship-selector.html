@@ -30,7 +30,7 @@
         padding:5px;
         margin:5px;
     }
-    #first{
+    #first,.first{
         border:1px solid gray;
         background-color:silver;
         width:60px;
@@ -41,22 +41,29 @@
     }
   </style>
   <script src="jquery-3.5.1.min.js"></script>
-  <script type="text/javascrupt">
-  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#btnClick").click(function(){
+        // $("p ~ span").hide(2000);
+        $(":not(:parent)").css("background-color","red");
+      });
+    });
   </script>
 </head>
 <body>
   <div id="main" class="style">
-    <p>Paragraph</p>
-    <span>Span</span>
-    <p>Paragraph</p>
+    <p>First Paragraph</p>
+    <span>First Span</span>
+    <div class="first"></div>
+    <span>Second Span</span>
   </div>
   <div id="sub" class="style">
-    <span>Span</span>
-    <div id="first">Div</div>
-    <p>Paragraph</p>
+    <p>First Paragraph</p>
+    <span>First Span</span>
+    <div id="first">First Div</div>
+    <p>Second Paragraph<span>Span inside</span></p>
     <div>
-      <span>Span</span>
+      <span>Span inside</span>
     </div>
   </div><br>
   <button id="btnClick">Click!</button>
