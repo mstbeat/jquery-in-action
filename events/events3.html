@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events</title>
+  <style>
+    
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // $(":text").focus(function(){
+    //   $(this).css("background-color","grey");
+    // });
+    // $(":text").blur(function(){
+    //   $(this).css("background-color","white");
+    // });
+    $("fieldset").focusout(function(){
+      $(this).css("background-color","grey");
+    });
+  });
+</script>
+</head>
+<body>
+  <fieldset style="width: 200px;">
+    <legend><b>Personal</b></legend>
+    <input type="text" id="firstName" placeholder="First Name"><br>
+    <input type="text" id="lastName" placeholder="Last Name"><br>
+    <input type="submit" id="btnSubmit" value="Submit">
+  </fieldset>
+</body>
+</html>

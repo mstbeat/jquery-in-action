@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events</title>
+  <style>
+    #txtName {
+      font-size: 30px;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#txtName").keydown(function(){
+      $(this).css("color","red");
+    });
+    $("#txtName").keyup(function(){
+      $(this).css("color","blue");
+    });
+  });
+</script>
+</head>
+<body>
+  <input type="text" id="txtName">
+</body>
+</html>

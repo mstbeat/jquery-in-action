@@ -14,7 +14,25 @@
   </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
-
+  $(document).ready(function(){
+    // $("#box").mouseenter(function(){
+    //   $(this).css("background-color","pink");
+    // });
+    // $("#box").mouseleave(function(){
+    //   $(this).css("background-color","purple");
+    // });
+    // $("#box").hover(function(){
+    //   $(this).css("background-color","pink");
+    // }, function(){
+    //   $(this).css("background-color","purple");
+    // });
+    $("#box").mousedown(function(){
+      $(this).css("background-color","pink");
+    });
+    $("#box").mouseup(function(){
+      $(this).css("background-color","green");
+    });
+  });
 </script>
 </head>
 <body>
