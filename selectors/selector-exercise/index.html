@@ -61,6 +61,10 @@
     // $(".content_instance:odd").css("border","4px solid yellow");
     $(".content_instance:eq(1)").css("border","4px solid yellow");
     $(".content_instance:even").css("border","4px solid white");
+    alert("You have " + $("img").length + " images on this page.")
+    $("img").hover(function(){
+      $(this).slideUp(5000);
+    });
   });
 </script>
 </body>
