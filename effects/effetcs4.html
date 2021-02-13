@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events</title>
+  <style>
+    div {
+      width: 150px;
+      height: 150px;
+      border: 2px solid black;
+      margin: 10px;
+      padding: 10px;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#btnStart").click(function(){
+      $("div:first").animate({"height":"25px","width":"50px"},8000);
+      $("div:last").delay(5000).animate({"height":"25px","width":"50px"},8000);
+      // $("p").animate({"wordSpacing":"50px","letterSpacing":"25px"},5000)
+    });
+    $("#btnStop").click(function(){
+      $("div").stop();
+    });
+  });
+</script>
+</head>
+<body>
+  <p>Paragraph Paragraph Paragraph Paragraph</p>
+  <div style="background-color: purple;"></div>
+  <div style="background-color: green;"></div>
+  <button id="btnStart">Start</button>
+  <button id="btnStop">Stop</button>
+</body>
+</html>
