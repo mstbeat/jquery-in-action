@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation</title>
+  <style>
+    
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#btnClick").click(function(){
+      // console.log("The attribute value is " + $("input:first").attr("value"));
+      // console.log("The property value is " + $("input:first").prop("value"));
+      $("option:first").attr("id","rose");
+      console.log("The id of 1st option is " + $("option:first").attr("id"));
+    });
+  });
+</script>
+</head>
+<body>
+  <h3>Personal Details</h3>
+  <label for="fname"><b>First Name:</b></label><input type="text" id="fname" value="John"><br>
+  <label for="lname"><b>Last Name:</b></label><input type="text" id="lname"><br>
+  <label for="flower"><b>Your favorite flower:</b></label><br>
+  <select id="flower" multiple>
+    <option>Rose</option>
+    <option>Tulips</option>
+    <option>Jasmine</option>
+  </select><br>
+  <p>My Paragraph</p>
+  <div id="result">The Result</div>
+  <input type="button" id="btnClick" value="Click"><br>
+</body>
+</html>
