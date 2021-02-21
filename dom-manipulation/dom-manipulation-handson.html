@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation</title>
+  <style>
+    .box {
+      width: 150px;
+      height: 150px;
+      border: 1px solid black;
+      margin: 5px;
+      position: absolute;
+    }
+    #red {
+      background-color: red;
+      left: 5px;
+    }
+    #green {
+      background-color: green;
+      left: 175px;
+    }
+    #blue {
+      background-color: blue;
+      left: 345px;
+    }
+    #container {
+      position: absolute;
+      top: 175px;
+    }
+    button {
+      font-size: 24px;
+      margin: 7px;
+      border-radius: 10px;
+      background: gray;
+      border: gray;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("button").click(function(){
+      var id = $(this).attr("id");
+      $("." + id).remove();
+    });
+  });
+</script>
+</head>
+<body>
+  <div id="red" class="box 1"></div>
+  <div id="green" class="box 2"></div>
+  <div id="blue" class="box 3"></div>
+  <div id="container">
+    <button id="1">Delete Red</button>
+    <button id="2">Delete Green</button>
+    <button id="3">Delete Blue</button>
+  </div>
+</body>
+</html>

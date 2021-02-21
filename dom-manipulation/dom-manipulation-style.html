@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation</title>
+  <style>
+    .coloring {
+      color: red;
+    }
+    .sizing {
+      font-size: 30px;
+      background-color: green;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#btnAdd").click(function(){
+      // alert($("h1").css("font-size"));
+      $("h1,p:last").addClass("coloring");
+      $("p:first").addClass("sizing");
+    });
+    $("#btnRemove").click(function(){
+      $("h1,p:last").removeClass("coloring");
+      // $("p:first").removeClass("sizing");
+      $("p:first").toggleClass("sizing");
+    });
+    // $("h1,h2").css({"color":"green","background-color":"pink"});
+  });
+</script>
+</head>
+<body>
+  <h1>Main Heading</h1>
+  <p>This is the main content.</p>
+  <h2>Sub Heading</h2>
+  <p>This is a new paragraph.</p>
+  <button id="btnAdd">Add</button>
+  <button id="btnRemove">Remove</button>
+</html>

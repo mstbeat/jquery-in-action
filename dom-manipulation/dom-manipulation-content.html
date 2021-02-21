@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation</title>
+  <style>
+    .parent {
+      width: 200px;
+      height: 150px;
+      border: 2px solid black;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#btnClick").click(function(){
+      $("#child1").replaceWith("Another Item");
+      $("<b>New Item</b>").replaceAll("#child2");
+    });
+  });
+</script>
+</head>
+<body>
+  <div class="parent">
+    <div>First Item</div>
+    <div id="child1">Second Item</div>
+    <div>Third Item</div>
+    <div id="child2">Fourth Item</div>
+  </div><br>
+  <button id="btnClick">Click</button>
+</body>
+</html>

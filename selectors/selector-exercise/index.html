@@ -61,10 +61,14 @@
     // $(".content_instance:odd").css("border","4px solid yellow");
     $(".content_instance:eq(1)").css("border","4px solid yellow");
     $(".content_instance:even").css("border","4px solid white");
-    alert("You have " + $("img").length + " images on this page.")
+    alert("You have " + $("img").length + " images on this page.");
     $("img").hover(function(){
       $(this).slideUp(5000);
     });
+    alert($("h1:eq(1)").text());
+    // $(".content_instance h2").replaceWith("<h2>New Heading</h2>");
+    $(".content_instance h2").html("New Heading");
+    $("h1:eq(1)").remove();
   });
 </script>
 </body>
