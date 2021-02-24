@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utility Function</title>
+  <style>
+    
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // var myArr = [1,2,3,4,5,6];
+    var myArr = ["Abel","Sarah","Aaron","Rose","John"];
+    var newArr = $.map(myArr,function(item,index){
+      // return (Math.pow(item,2) + index);
+      return ((index+1) + " : " + item.toUpperCase());
+    });
+    $("#result").html("Current array: <br>" + myArr.join("<br>") + "<br>New array: <br>" + newArr.join("<br>"));
+  });
+</script>
+</head>
+<body>
+  <div id="result"></div>
+</body>
+</html>

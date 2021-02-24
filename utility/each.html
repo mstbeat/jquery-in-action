@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utility Function</title>
+  <style>
+    
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var nameArr = ["Aaron","Ann","Aidan","Sarah","Abel"];
+    var numberObj = {a:1,b:10,c:100,d:1000};
+    var sum = 0;
+    $.each(numberObj,function(index,value){
+      $("#result").append(index + " : " + value + "<br>");
+      // alert(index);
+      // sum += value;
+      // $("#result").html(sum);
+    });
+    // $.each(nameArr,function(index,value){
+    //   // alert(index + " : " + value);
+    //   $("#result").append(index+1 + " : " + value + "<br>");
+    // });
+    $("li").each(function(index,value){
+      $("#result2").append(index + " : " + $(this).text() + "<br>");
+    });
+    $("div").each(function(index,value){
+      $("#result3").append(index + " : " + $(this).attr("id") + "<br>");
+    });
+  });
+</script>
+</head>
+<body>
+  <ul>
+    <li>Jasmine</li>
+    <li>Rose</li>
+    <li>Lotus</li>
+    <li>Tulips</li>
+  </ul>
+  <div id="result"></div>
+  <div id="result2"></div>
+  <div id="result3"></div>
+</body>
+</html>

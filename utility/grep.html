@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utility Function</title>
+  <style>
+    
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var weekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var newArr = $.grep(weekDays,function(item,index){
+      // return (item.charAt(0) == "T");
+      return (index > 0 && index < 6);
+    },true);
+    $("#result").html("Current array: " + weekDays + "<br>New array: " + newArr);
+  });
+</script>
+</head>
+<body>
+  <div id="result"></div>
+</body>
+</html>
