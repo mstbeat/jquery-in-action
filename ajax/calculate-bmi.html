@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX</title>
+  <style>
+    
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+  });
+  function calculateBMI() {
+    var height = document.getElementById("height").value;
+    var weight = document.getElementById("weight").value;
+
+    if (height%1 >= 0 && weight%1 >= 0) {
+      var xmlhttp = new XMLHttpRequest();
+      var url = "http://localhost/jquery/calculate-bmi.php?ht=" + height + "&wt=" + weight;
+      xmlhttp.open("GET",url,true);
+      xmlhttp.send();
+      xmlhttp.onreadystatechange = function(){
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          var output = xmlhttp.responseText;
+          var jsOutput = JSON.parse(output);
+          document.getElementById("result").innerHTML =
+            "Your BMI is " + (jsOutput.bmi).toFixed(2) + ". " + jsOutput.message;
+        }
+      }
+    } else {
+      
+    }
+  }
+</script>
+</head>
+<body>
+  <div id="box">
+    <h2>BMI Calculator</h2>
+    <table>
+      <tr><td>Height:</td><td><input type="text" id="height"></td><td>(height in cm)</td></tr>
+      <tr><td>Weight:</td><td><input type="text" id="weight"></td><td>(weight in kg)</td></tr>
+    </table><br>
+    <center><button id="btnCalculate" onclick="calculateBMI();">Calculate BMI</button></center>
+    <div id="result"></div>
+  </div>
+</body>
+</html>

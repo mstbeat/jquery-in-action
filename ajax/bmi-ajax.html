@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    #box {
+      height: 250px;
+      width: 350px;
+      border: 2px solid black;
+      margin: 0px auto;
+    }
+    h2 {
+      text-align: center;
+    }
+    table {
+      margin: 0px auto;
+    }
+    #result {
+      color: purple;
+      font-size: 15px;
+      text-align: justify;
+      padding: 2px;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#btnCalculate").click(function(){
+      var height = $("#height").val();
+      var weight = $("#weight").val();
+      if (height%1 >= 0 && weight%1 >= 0) {
+        $.ajax({
+          url:"http://localhost/jQuery/calculate-bmi.php",
+          data:{ht:height,wt:weight},
+          dataType:"json",
+          success:function(data,status,jqXHR){
+            $("#result").html("Your BMI is " + (data.bmi).toFixed(2) + ". " + data.message);
+          }
+        });
+      }
+    });
+  });
+</script>
+</head>
+<body>
+  <div id="box">
+    <h2>BMI Calculator</h2>
+    <table>
+      <tr><td>Height:</td><td><input type="text" id="height"></td><td>(height in cm)</td></tr>
+      <tr><td>Weight:</td><td><input type="text" id="weight"></td><td>(weight in kg)</td></tr>
+    </table><br>
+    <center><button id="btnCalculate">Calculate BMI</button></center>
+    <div id="result"></div>
+  </div>
+</body>
+</html>
