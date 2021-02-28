@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plugins</title>
+  <style>
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="jquery.myplugin.js"></script>
+  <script src="jquery.styling.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("body *").click(function(){
+        alert("The ID is " + $(this).getDetail());
+        $(this).getElement();
+      });
+      $("button").click(function(){
+        $("h2").colorText({color:"red"});
+        $("h3").colorText({background:"pink"});
+        $("p").colorText({color:"blue",background:"black"});
+        $(this).colorText({color:"blue",background:"black"});
+      });
+    });
+  </script>
+</head>
+<body>
+  <h2 id="mainHead">Main Heading</h2>
+  <p id="first">This is a paragraph.</p>
+  <h3 id="subHead">Sub Heading</h3>
+  <p id="last">This is another paragraph.</p>
+  <button id="btnClick">Click</button>
+</html>
