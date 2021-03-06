@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accrodion</title>
+  <style>
+    #accordion {
+      width: 400px;
+      margin: 0px auto;
+      border-bottom: 1px solid #940773;
+    }
+    #accordion h4 {
+      background-color: #E6BCDC;
+      border: 1px solid #940773;
+      border-bottom: none;
+      margin: 0;
+      padding: 5px;
+      cursor: pointer;
+    }
+    #accordion h4:hover {
+      background-color: #DB5CBD;
+    }
+    #accordion p {
+      background-color: #F0E1EC;
+      border: 1px solid #940773;
+      border-bottom: none;
+      border-top: none;
+      margin: 0;
+      padding: 15px;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#accordion p:not(:first)").hide();
+    $("#accordion h4").click(function(){
+      $(this).next().slideToggle(2000).siblings("p:visible").slideUp(2000);
+    });
+  });
+</script>
+</head>
+<body>
+  <div id="accordion">
+    <h4>First Section</h4>
+    <p>This is the first paragraph.his is the first paragraph.his is the first paragraph.his is the first paragraph.his is the first paragraph.</p>
+    <h4>Second Section</h4>
+    <p>This is the second paragraph.his is the second paragraph.his is the second paragraph.his is the second paragraph.his is the second paragraph.</p>
+    <h4>Third Section</h4>
+    <p>This is the third paragraph.his is the third paragraph.his is the third paragraph.his is the third paragraph.his is the third paragraph.</p>
+    <h4>Fourth Section</h4>
+    <p>This is the fourth paragraph.his is the fourth paragraph.his is the fourth paragraph.his is the fourth paragraph.his is the fourth paragraph.</p>
+    <h4>Fifth Section</h4>
+    <p>This is the fifth paragraph.his is the fifth paragraph.his is the fifth paragraph.his is the fifth paragraph.his is the fifth paragraph.</p>
+  </div>
+</body>
+</html>
