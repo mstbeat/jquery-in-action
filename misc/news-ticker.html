@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Ticker</title>
+  <style>
+    
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  var interval;
+
+  function startTicker(){
+    $("#news li:first").slideUp(function(){
+      $(this).appendTo($("#news")).slideDown();
+    });
+  }
+
+  function stopTicker(){
+    clearInterval(interval);
+  }
+
+  $(document).ready(function(){
+    interval = setInterval(startTicker,1000);
+    $("#news").hover(function(){
+      stopTicker();
+    },function(){
+      interval = setInterval(startTicker,1000);
+    });
+  });
+  
+</script>
+</head>
+<body>
+  <ul id="news">
+    <li>The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. </li>
+    <li>The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. </li>
+    <li>The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. </li>
+    <li>The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. </li>
+    <li>The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. </li>
+  </ul>
+</body>
+</html>
