@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News Ticker</title>
   <style>
-    
+    .ticker {
+      background-color: #abd1c0;
+      width: 350px;
+      height: 200px;
+      border: 3px solid #0e5736;
+      overflow: hidden;
+      border-radius: 15px;
+      margin: 0px auto;
+    }
+    ul {
+      margin: 1px;
+      padding: 1px;
+    }
+    li {
+      text-align: justify;
+      list-style-type: none;
+      border-bottom: 2px solid #024d2b;
+      height: 70px;
+    }
   </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
@@ -33,12 +51,14 @@
 </script>
 </head>
 <body>
-  <ul id="news">
-    <li>The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. </li>
-    <li>The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. </li>
-    <li>The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. </li>
-    <li>The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. </li>
-    <li>The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. </li>
-  </ul>
+  <div class="ticker">
+    <ul id="news">
+      <li>The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. The <b>first</b> piece of news. </li>
+      <li>The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. The <b>second</b> piece of news. </li>
+      <li>The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. The <b>third</b> piece of news. </li>
+      <li>The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. The <b>fourth</b> piece of news. </li>
+      <li>The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. The <b>fifth</b> piece of news. </li>
+    </ul>
+  </div>
 </body>
 </html>
