@@ -3,7 +3,46 @@
 <head>
     <title>Image Gallery</title>
     <style>
-      
+      #gallery {
+        width: 450px;
+        margin: 25px auto;
+        position: relative;
+      }
+      #upper {
+        height: 450px;
+        margin-bottom: 10px;
+      }
+      #upper img {
+        width: 100%;
+        position: absolute;
+      }
+      .thumb img {
+        width: 150px;
+        height: 120px;
+      }
+      #lower {
+        overflow: hidden;
+      }
+      .arrow {
+        position: absolute;
+        bottom: 45px;
+      }
+      #left {
+        left: -60px;
+        transform: rotate(180deg);
+      }
+      #right {
+        right: -60px;
+      }
+      #thumbs {
+        white-space: nowrap;
+      }
+      #thumbs img {
+        opacity: .4;
+      }
+      #thumbs img:hover {
+        opacity: 1;
+      }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
