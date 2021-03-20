@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chart</title>
+  <style>
+    #main {
+      margin: 25px auto;
+      width: 800px;
+    }
+    #left, #right {
+      width: 50%;
+      float: left;
+      margin-top: 60px;
+    }
+    #left {
+      text-align: center;
+    }
+    table {
+      border: 2px solid black;
+      margin: 20px auto;
+      width: 75%;
+    }
+    th {
+      border: 1px solid black;
+      text-align: center;
+    }
+    td {
+      border: 1px solid black;
+      text-align: center;
+      padding: 6px;
+    }
+    #graph {
+      border-left: 2px solid black;
+      border-bottom: 2px solid black;
+      height: 300px;
+      position: relative;
+    }
+    .row {
+      width: 100%;
+      height: 2px;
+      background: black;
+      position: absolute;
+    }
+    .content {
+      margin: -10px 0 0 -40px;
+    }
+    .column {
+      position: absolute;
+      bottom: 0;
+      width: 15%;
+      margin-left: 20px;
+    }
+    .column div {
+      text-align: center;
+      margin-top: -20px;
+    }
+    button {
+      border-radius: 5px;
+      font-size: 20px;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  function displayGraph(){
+    $("tbody tr").each(function(index){
+      $(".column").css("height", "0");
+      var cell = $(this).children("td").eq(1).text();
+      $("#column" + index).animate({height:cell}, 1500).html("<div>" + cell + "</div>");
+    });
+  }
+
+  $(document).ready(function(){
+    var arr = [25, 90, 60, 53];
+    var cells = $("tr td");
+    for(var i = 1, j = 0; i < cells.length; i += 3){
+      cells[i].innerHTML = arr[j] + "%";
+      j++;
+    }
+    displayGraph();
+  });
+</script>
+</head>
+<body>
+  <div id="main">
+    <div id="left">
+      <table>
+        <thead>
+          <th colspan=3>Data Table</th>
+        </thead>
+        <tbody>
+          <tr><td>Class 1</td><td></td><td style="background: gray;"></td></tr>
+          <tr><td>Class 2</td><td></td><td style="background: blue;"></td></tr>
+          <tr><td>Class 3</td><td></td><td style="background: purple;"></td></tr>
+          <tr><td>Class 4</td><td></td><td style="background: pink;"></td></tr>
+        </tbody>
+      </table>
+      <button id="btnDisplay" onclick="displayGraph()">Display</button>
+    </div>
+    <div id="right">
+      <div id="graph">
+        <div class="row" style="bottom:25%;"><div class="content">25%</div></div>
+        <div class="row" style="bottom:50%;"><div class="content">50%</div></div>
+        <div class="row" style="bottom:75%;"><div class="content">75%</div></div>
+        <div class="column" id="column0" style="left: 0; background: gray;"></div>
+        <div class="column" id="column1" style="left: 25%; background: blue;"></div>
+        <div class="column" id="column2" style="left: 50%; background: purple;"></div>
+        <div class="column" id="column3" style="left: 75%; background: pink;"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
