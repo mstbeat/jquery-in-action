@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    #container {
+      width: 750px;
+      height: 610px;
+      border: 2px solid gray;
+      margin: 0px auto;
+      border-radius: 20px;
+    }
+    #filter {
+      list-style-type: none;
+    }
+    #filter li {
+      float: left;
+      font-size: 25px;
+      border-right: 2px solid gray;
+      margin-right: 10px;
+      padding-right: 10px;
+    }
+    #filter li:last-child {
+      border-right: none;
+    }
+    #filter li a {
+      color: silver;
+      text-decoration: none;
+    }
+    #filter li a:hover {
+      color: gray;
+    }
+    #filter li.current a {
+      color: black;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    #portfolio {
+      list-style-type: none;
+      width: 680px;
+      float: left;
+    }
+    #portfolio li {
+      float: left;
+      margin: 5px;
+      padding: 5px;
+      text-align: center;
+      width: 200px;
+      border: 1px solid gray;
+      border-radius: 2px;
+      font-size: 17px;
+    }
+    #portfolio img {
+      width: 200px;
+      height: 120px;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    
+  });
+</script>
+</head>
+<body>
+  <div id="container">
+    <ul id="filter">
+      <li class="current"><a href="#">All</a></li>
+      <li><a href="#">Ruby</a></li>
+      <li><a href="#">PHP</a></li>
+      <li><a href="#">jQuery</a></li>
+      <li><a href="#">AJAX</a></li>
+    </ul>
+    <ul id="portfolio">
+      <li><a href="#"><img src="images/got-gigs.jpg">got gigs?</a></li>
+      <li><a href="#"><img src="images/yastagram.jpg">YASTAGRAM</a></li>
+      <li><a href="#"><img src="images/prime-minister-matching-game.jpg">首相マッチングゲーム</a></li>
+      <li><a href="#"><img src="images/word-hunt-game.jpg">英単語を探せ！</a></li>
+      <li><a href="#"><img src="images/picture-puzzle-game.png">パズルゲーム</a></li>
+      <li><a href="#"><img src="images/musician-quick-quiz.jpg">バンド経験者クイズ</a></li>
+      <li><a href="#"><img src="images/laravel-note-app.jpg">NoteApp</a></li>
+      <li><a href="#"><img src="images/rock-band-memory-game.png">バンド神経衰弱</a></li>
+    </ul>
+  </div>
+</body>
+</html>
