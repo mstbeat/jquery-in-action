@@ -60,7 +60,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-    
+    $("#filter a").click(function(){
+      $("#filter .current").removeClass("current");
+      $(this).parent().addClass("current");
+      var filterValue = $(this).text().toLowerCase().replace(" ","_");
+      $("#portfolio li").fadeIn(10);
+      if (filterValue != "all") {
+        $("#portfolio li").not("." + filterValue).fadeOut(10);
+      };
+    });
   });
 </script>
 </head>
@@ -74,14 +82,14 @@
       <li><a href="#">AJAX</a></li>
     </ul>
     <ul id="portfolio">
-      <li><a href="#"><img src="images/got-gigs.jpg">got gigs?</a></li>
-      <li><a href="#"><img src="images/yastagram.jpg">YASTAGRAM</a></li>
-      <li><a href="#"><img src="images/prime-minister-matching-game.jpg">首相マッチングゲーム</a></li>
-      <li><a href="#"><img src="images/word-hunt-game.jpg">英単語を探せ！</a></li>
-      <li><a href="#"><img src="images/picture-puzzle-game.png">パズルゲーム</a></li>
-      <li><a href="#"><img src="images/musician-quick-quiz.jpg">バンド経験者クイズ</a></li>
-      <li><a href="#"><img src="images/laravel-note-app.jpg">NoteApp</a></li>
-      <li><a href="#"><img src="images/rock-band-memory-game.png">バンド神経衰弱</a></li>
+      <li class="ruby"><a href="https://got-gigs.herokuapp.com/"><img src="images/got-gigs.jpg">got gigs?</a></li>
+      <li class="ruby"><a href="https://yastagram.herokuapp.com/"><img src="images/yastagram.jpg">YASTAGRAM</a></li>
+      <li class="jquery"><a href="https://prime-minister-matching-game.herokuapp.com/"><img src="images/prime-minister-matching-game.jpg">首相マッチングゲーム</a></li>
+      <li class="jquery"><a href="https://word-hunt-game.herokuapp.com/"><img src="images/word-hunt-game.jpg">英単語を探せ！</a></li>
+      <li class="jquery"><a href="https://picture-puzzle-game.herokuapp.com/"><img src="images/picture-puzzle-game.png">パズルゲーム</a></li>
+      <li class="ajax"><a href="https://musician-quick-quiz.herokuapp.com/"><img src="images/musician-quick-quiz.jpg">バンド経験者クイズ</a></li>
+      <li class="php"><a href="http://laravel-note-app.herokuapp.com/"><img src="images/laravel-note-app.jpg">NoteApp</a></li>
+      <li class="jquery"><a href="https://rock-band-memory-game.herokuapp.com/"><img src="images/rock-band-memory-game.png">バンド神経衰弱</a></li>
     </ul>
   </div>
 </body>

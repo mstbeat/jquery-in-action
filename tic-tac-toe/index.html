@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>○×ゲーム</title>
+  <style>
+    #grid {
+      width: 400px;
+      margin: 30px auto;
+    }
+    .square {
+      border: 1px solid black;
+      width: 80px;
+      height: 80px;
+      padding: 20px;
+      text-align: center;
+      font-size: 50px;
+      float: left;
+    }
+    #s1, #s4, #s7 {
+      border-left: none;
+    }
+    #s1, #s2, #s3 {
+      border-top: none;
+    }
+    #s3, #s6, #s9 {
+      border-right: none;
+    }
+    #s7, #s8, #s9 {
+      border-bottom: none;
+    }
+    #container {
+      clear: left;
+      text-align: center;
+      display: none;
+    }
+    #result, #btnPlay {
+      background: black;
+      color: white;
+      font-size: 30px;
+      padding: 5px;
+      margin-top: 20px;
+      height: 50px;
+    }
+    .x-mark::after {
+      content: "×";
+      color: red;
+    }
+    .o-mark::after {
+      content: "○";
+      color: blue;
+    }
+    #result.win {
+      background: green;
+    }
+    #result.lost {
+      background: red;
+    }
+    #result.draw {
+      background: gray;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    var finished;
+
+    $(document).ready(function(){
+      finished = false;
+      for(var i = 1; i <= 9; i++){
+        $("#grid").append("<div id=s" + i + " class=square data-position=" + i + "></div>");
+      }
+      $(".square").on("click",yourTurn);
+    });
+
+    function yourTurn(){
+      if(!finished){
+        if($(this).attr("class").indexOf("marked") < 0) {
+          $(this).addClass("x-mark");
+          $(this).addClass("marked");
+          finished = findWinner($(this).data("position"), "x-mark");
+          computerTurn();
+        } else {
+          alert("このマスは選択できません！");
+        }
+      } else if(finished){
+        alert("ゲームオーバー… リセットしてください。")
+      }
+      if($(".marked").length == 9 && !finished) {
+        displayResult("引き分け", "draw");
+        finished = true;
+      }
+    }
+
+    function computerTurn(){
+      var unticked = $(".square:not(.marked)");
+      var position = Math.floor(Math.random() * unticked.length);
+      var randomElement = unticked[position];
+      $(randomElement).addClass("o-mark");
+      $(randomElement).addClass("marked");
+      finished = findWinner($(randomElement).data("position"), "o-mark");
+    }
+
+    function findWinner(pos, mark){
+      var winningPositions = [[1,2,3],[1,4,7],[1,5,9],[2,5,8],[3,6,9],[3,5,7],[4,5,6],[7,8,9]];
+      if($(".x-mark").length >= 3 || $(".o-mark").length >= 3) {
+        $.each(winningPositions, function(index, withinArray){
+          if(withinArray.indexOf(pos) >= 0) {
+            var cellsInARow = 0;
+            $.each(withinArray, function(key, value){
+              var currentMark = $("#s" + value).attr("class");
+              if(currentMark.indexOf(mark) >= 0) {
+                console.log(pos + " : " + withinArray);
+                cellsInARow += 1;
+                console.log("In a Row :" + cellsInARow);
+                if(cellsInARow == 3) {
+                  finished = true;
+                  if(mark == "x-mark") {
+                    result = "あなたの勝ちです！";
+                    status = "win";
+                  } else {
+                    result = "あなたの負けです…"
+                    status = "lost";
+                  }
+                  displayResult(result, status);
+                }
+              }
+            })
+          }
+        });
+      }
+      return finished;
+    }
+
+    function displayResult(result, status){
+      $("#container").show();
+      $("#result").html(result);
+      $("#result").addClass(status);
+    }
+
+    function resetGame(){
+      $("#container").hide();
+      $(".square").removeClass("marked");
+      $(".square").removeClass("x-mark");
+      $(".square").removeClass("o-mark");
+      $("#result").removeClass("draw");
+      $("#result").removeClass(status);
+      finished = false;
+    }
+  </script>
+</head>
+<body>
+  <div id="grid"></div>
+  <div id="container">
+    <button id="result" disabled></button>
+    <button id="btnPlay" onclick="resetGame();">リセット</button>
+  </div>
+</body>
+</html>
