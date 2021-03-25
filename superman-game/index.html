@@ -9,7 +9,7 @@
     body {
       background-image: url("images/background.jpg");
       background-color:rgba(255,255,255,0.8);
-      background-blend-mode:lighten;
+      background-blend-mode: lighten;
       background-size: cover;
     }
     button {
@@ -104,8 +104,7 @@
         var game = function(){
           var currentPosition = parseInt($(".pipe").css("right"));
 
-          if(collision(superman, $("#pipe1")) || collision(superman, $("#pipe2")) ||
-            parseInt(superman.css("top")) <= 0 || parseInt(superman.css("top")) >= containerHeight - superman.height()){
+          if(collision(superman, $("#pipe1")) || collision(superman, $("#pipe2")) || parseInt(superman.css("top")) <= 0 || parseInt(superman.css("top")) >= containerHeight - superman.height()){
             stopGame();
           } else {
             if(parseInt(superman.css("left")) > containerWidth - currentPosition){
