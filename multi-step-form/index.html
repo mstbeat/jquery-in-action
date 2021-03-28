@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Multi Step Form</title>
+  <style>
+    #container {
+      width: 520px;
+      border: 2px solid black;
+      margin: 10px auto;
+      padding: 10px;
+    }
+    #progressbar .icon {
+      background: gray;
+      color: white;
+      display: inline-block;
+      padding: 12px;
+      border-radius: 50%;
+    }
+    #progressbar .bar {
+      display: inline-block;
+      width: 195px;
+      height: 10px;
+      background: gray;
+      border-radius: 20px;
+    }
+    form div {
+      width: 300px;
+      margin: 20px auto;
+      padding: 10px;
+      background: dimgray;
+    }
+    .mainHeading {
+      font-size: 30px;
+      color: white;
+      font-weight: bold;
+      margin: 0px;
+      margin-bottom: 15px;
+    }
+    input, ::placeholder {
+      font-size: 20px;
+    }
+    input[type=submit], button {
+      width: 100px;
+      height: 30px;
+      font-size: 20px;
+      border: 1px solid white;
+      color: white;
+      background: none;
+      border-radius: 5px;
+    }
+    #personalInfo, #contactInfo {
+      display: none;
+    }
+    #progressbar .active.icon, #progressbar .active.bar {
+      background: green;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <script>
+    $(document).ready(function(){
+      $(".next").click(function(e){
+        e.preventDefault();
+        var elements = $(this).parent().children();
+        var error = doValidation(elements);
+        if(error == 0) {
+          $(".individual").css("display", "none");
+          var nextDiv = $(this).parent().next().attr("id");
+          $("#" + nextDiv).fadeIn();
+          var num = $(this).data("num");
+          $("#bar" + num + ", #icon" + num).addClass("active");
+        } else {
+          alert("Please fill all the details.");
+        }
+      });
+      $(".previous").click(function(e){
+        e.preventDefault();
+        $(".individual").css("display", "none");
+        var prevDiv = $(this).parent().prev().attr("id");
+        $("#" + prevDiv).fadeIn();
+        var prevNum = $(this).data("num");
+        $("#bar" + prevNum + ", #icon" + prevNum).removeClass("active");
+      });
+      $("input[type=submit]").click(function(){
+        var siblings = $(this).parent().children();
+        var errors = doValidation(siblings);
+        if(errors != 0) {
+          alert("Please fill all the details.");
+          return false;
+        }
+      });
+
+      function doValidation(items){
+        var empty = 0;
+        $.each(items, function(key, item){
+          if($(item).prop("tagName") == "INPUT" && item.value == "") {
+            empty++;
+          }
+        });
+        return empty;
+      }
+    });
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div id="progressbar">
+      <span id="icon0" class="icon active">1</span>
+      <span id="bar1" class="bar"></span>
+      <span id="icon1" class="icon">2</span>
+      <span id="bar2" class="bar"></span>
+      <span id="icon2" class="icon">3</span>
+    </div>
+    <form action="display.php" method="post">
+      <div id="loginInfo" class="individual">
+        <p class="mainHeading">Account Details</p>
+        <input type="text" id="username" placeholder="Username.."><br><br>
+        <input type="password" id="pwd" placeholder="Password.."><br><br>
+        <button id="btnNext" class="next" data-num="1">Next</button>
+      </div>
+      <div id="personalInfo" class="individual">
+        <p class="mainHeading">Personal Details</p>
+        <input type="text" name="fname" placeholder="First name.."><br><br>
+        <input type="text" name="lname" placeholder="Last name.."><br><br>
+        <button id="btnPrev" class="previous" data-num="1">Previous</button>
+        <button id="btnNext1" class="next" data-num="2">Next</button>
+      </div>
+      <div id="contactInfo" class="individual">
+        <p class="mainHeading">Contact Details</p>
+        <input type="email" id="mailId" placeholder="Email.."><br><br>
+        <input type="tel" id="num" placeholder="Phone number.." pattern="[0-9]{11}"><br><br>
+        <button id="btnPrev1" class="previous" data-num="2">Previous</button>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</body>
+</html>
