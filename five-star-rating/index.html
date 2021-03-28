@@ -3,22 +3,63 @@
 <head>
   <title>5 Star Rating</title>
   <style>
-    
+    #container {
+      width: 400px;
+      height: 250px;
+      margin: 50px auto;
+    }
+    ul {
+      padding: 0px;
+      margin: 0px;
+    }
+    li {
+      display: inline-block;
+      font-size: 35px;
+      padding: 10px;
+      color: #CCC;
+    }
+    #message {
+      font-size: 20px;
+    }
+    .hovered-stars {
+      color: #FFCC36;
+    }
+    .clicked-stars {
+      color: sandybrown;
+    }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
   <script>
-    
+    $(document).ready(function(){
+      $("li").mouseover(function(){
+        var current = $(this);
+        $("li").each(function(index){
+          $(this).addClass("hovered-stars");
+          if(index == current.index()) {
+            return false;
+          }
+        });
+      });
+      $("li").mouseleave(function(){
+        $("li").removeClass("hovered-stars");
+      });
+      $("li").click(function(){
+        $("li").removeClass("clicked-stars");
+        $(".hovered-stars").addClass("clicked-stars");
+        $("#message").html("Thanks! You have rated this " + $(".clicked-stars").length + " star(s).");
+      });
+    });
   </script>
 </head>
 <body>
   <div id="container">
     <ul>
-      <li><i class="far fa-star fa-fw"></i></li>
-      <li><i class="far fa-star fa-fw"></i></li>
-      <li><i class="far fa-star fa-fw"></i></li>
-      <li><i class="far fa-star fa-fw"></i></li>
-      <li><i class="far fa-star fa-fw"></i></li>
+      <li><i class="fa fa-star fa-fw"></i></li>
+      <li><i class="fa fa-star fa-fw"></i></li>
+      <li><i class="fa fa-star fa-fw"></i></li>
+      <li><i class="fa fa-star fa-fw"></i></li>
+      <li><i class="fa fa-star fa-fw"></i></li>
     </ul>
     <div id="message">Please rate your overall experience!</div>
   </div>
