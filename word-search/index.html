@@ -15,6 +15,7 @@
       text-align: center;
       font-size: 26px;
       border: 1px solid black;
+      display: none;
     }
     #letters {
       width: 580px;
@@ -31,18 +32,56 @@
       text-align: center;
       margin: 3px;
     }
+    .done {
+      text-decoration: line-through;
+    }
+    .colorPurple {
+      background: purple;
+    }
+    .correctlySelected {
+      background: silver;
+    }
+    #message {
+      color: red;
+    }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
   <script>
     var myWords = ["EGG", "MILK", "BUTTER", "JAM", "OATS", "SUGAR", "BREAD", "RUSK"];
     var tempWords = [];
+    var selectedWord = "";
 
     $(document).ready(function(){
+      alert("RULES\n1. Words could be displayed horizpntally, vertically or diagonally. \n2. To selected the letters, press Shift or Cmd key and then click the letters in the correct order and then release the Shift or Cmd key.")
       arrangeGame();
+      $(".individual").click(function(){
+        $(this).addClass("colorPurple");
+        selectedWord += $(this).html();
+        console.log(selectedWord);
+      });
+      $(document).keydown(function(){
+        selectedWord = "";
+        $(".individual").removeClass("colorPurple");
+      }).keyup(function(){
+        if (myWords.indexOf(selectedWord) >= 0) {
+          $(".colorPurple").addClass("correctlySelected");
+          $("#hint p").each(function(key, item) {
+            if (selectedWord == $(item).html()) {
+              alert($(this).html());
+              $(this).addClass("done");
+            }
+            if ($(".done").length == myWords.length) {
+              $("#hint").empty();
+              $("#hint").append("<p id='message'>Wow! You have done it!</p>");
+            }
+          });
+        }
+      });
     });
 
     function arrangeGame() {
+      $("#hint").show();
       $.each(myWords, function(key, item){
         $("#hint").append("<p>" + item + "</p>");
       });
@@ -52,7 +91,7 @@
         }
       }
       placeCorrectLetters(myWords);
-      console.log("end of first array");
+      // console.log("end of first array");
       placeCorrectLetters(tempWords);
       $.each($(".individual"), function(key, item) {
         if ($(item).attr("data-word") == undefined) {
@@ -76,21 +115,21 @@
           nextLetter = 1;
           if (myColumn*1 + myArr[i].length <= 12) {
             newStart = start;
-            console.log("space in row: " + myArr[i] + " : " + start + " : " + myColumn);
+            // console.log("space in row: " + myArr[i] + " : " + start + " : " + myColumn);
           } else {
             var newColumn = 12 - myArr[i].length;
             newStart = $(".individual[data-row=" + myRow + "][data-column=" + newColumn + "]").index();
-            console.log("no space in row: " + myArr[i] + " : " + start + " : " + myColumn + " : " + newStart);
+            // console.log("no space in row: " + myArr[i] + " : " + start + " : " + myColumn + " : " + newStart);
           }
         } else if (orientation == "column") {
           nextLetter = 12;
           if (myRow*1 + myArr[i].length <= 12) {
             newStart = start;
-            console.log("space in column: " + myArr[i] + " : " + start + " : " + myRow);
+            // console.log("space in column: " + myArr[i] + " : " + start + " : " + myRow);
           } else {
             var newRow = 12 - myArr[i].length;
             newStart = $(".individual[data-row=" + newRow + "][data-column=" + myColumn + "]").index();
-            console.log("no space in column: " + myArr[i] + " : " + start + " : " + myRow + " : " + newStart);
+            // console.log("no space in column: " + myArr[i] + " : " + start + " : " + myRow + " : " + newStart);
           }
         } else if (orientation == "diagonal") {
           nextLetter = 13;
@@ -116,16 +155,16 @@
         var occupied = checkOccupied(myArr[i], newStart, orientation);
         if (occupied == "empty") {
           $.each(characters, function(key,item){
-            console.log(item);
+            // console.log(item);
             $(".individual:eq(" + (newStart + nextPosition) +")").html(item);
             $(".individual:eq(" + (newStart + nextPosition) +")").attr("data-word", myArr[i]);
-            $(".individual:eq(" + (newStart + nextPosition) +")").css("background", "pink");
+            // $(".individual:eq(" + (newStart + nextPosition) +")").css("background", "pink");
             nextPosition += nextLetter;
           });
         } else {
           tempWords.push(myArr[i]);
         }
-        console.log(tempWords);
+        // console.log(tempWords);
       }
     }
 
