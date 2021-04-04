@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Click Speed Test</title>
+  <style>
+    #main {
+      width: 400px;
+      height: 400px;
+      margin: 0px auto;
+      border: 2px solid black;
+    }
+    button {
+      width: 80px;
+      height: 30px;
+      border: 1px solid black;
+      border-radius: 5px;
+      text-align: center;
+      margin: 10px;
+      font-size: 20px;
+    }
+    span {
+      font-size: 20px;
+    }
+    #container {
+      width: 350px;
+      height: 350px;
+      text-align: center;
+      border: 1px solid black;
+    }
+    .box {
+      width: 65px;
+      height: 65px;
+      background: #1DA277;
+      color: white;
+      font-size: 30px;
+      margin: 2px;
+      float: left;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 65px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <script>
+    $(document).ready(function(){
+      arrangeGame();
+
+      function arrangeGame() {
+        for (var i = 1; i <= 25; i++) {
+          $("#container").append("<div class='box'>1</div>");
+        }
+      }
+    });
+  </script>
+</head>
+<body>
+  <div id="main">
+    <button id="btnClick">Restart</button>
+    <span id="timer"></span>
+    <span id="nextNum"></span>
+    <div id="container"></div>
+  </div>
+</body>
+</html>
