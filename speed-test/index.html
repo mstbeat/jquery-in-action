@@ -7,7 +7,6 @@
       width: 400px;
       height: 400px;
       margin: 0px auto;
-      border: 2px solid black;
     }
     button {
       width: 80px;
@@ -25,7 +24,6 @@
       width: 350px;
       height: 350px;
       text-align: center;
-      border: 1px solid black;
     }
     .box {
       width: 65px;
@@ -48,8 +46,21 @@
 
       function arrangeGame() {
         for (var i = 1; i <= 25; i++) {
-          $("#container").append("<div class='box'>1</div>");
+          $("#container").append("<div class='box'></div>");
         }
+        var numArr1 = generateArray(1, 25);
+        var numArr2 = generateArray(26, 50);
+        $(".box").each(function(key, item) {
+          $(item).html(numArr1.splice(Math.floor(Math.random()*numArr1.length), 1));
+        })
+      }
+
+      function generateArray(min, max) {
+        var myArr = [];
+        for (var i = min; i <= max; i++) {
+          myArr.push(i);
+        }
+        return myArr;
       }
     });
   </script>
