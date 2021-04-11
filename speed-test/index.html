@@ -4,18 +4,18 @@
   <title>Click Speed Test</title>
   <style>
     #main {
-      width: 400px;
+      width: 340px;
       height: 400px;
       margin: 0px auto;
     }
     button {
-      width: 80px;
+      width: 100px;
       height: 30px;
       border: 1px solid black;
       border-radius: 5px;
       text-align: center;
       margin: 10px;
-      font-size: 20px;
+      font-size: 18px;
     }
     span {
       font-size: 20px;
@@ -36,12 +36,18 @@
       border-radius: 5px;
       text-align: center;
       line-height: 65px;
+      cursor: pointer;
+    }
+    #nextNum {
+      float: right;
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
   <script>
     $(document).ready(function(){
+      var currentNum = 1;
+
       arrangeGame();
 
       function arrangeGame() {
@@ -53,6 +59,17 @@
         $(".box").each(function(key, item) {
           $(item).html(numArr1.splice(Math.floor(Math.random()*numArr1.length), 1));
         })
+        $(".box").click(function() {
+          if ($(this).html() == currentNum) {
+            $(this).html(numArr2.splice(Math.floor(Math.random()*numArr2.length), 1));
+            currentNum++;
+            $("#nextNum").html("次の数字 : " + currentNum);
+            $(this).css("background", "#0E9368");
+            if (currentNum > 26) {
+              $(this).css("background", "white");
+            }
+          }
+        });
       }
 
       function generateArray(min, max) {
@@ -67,9 +84,9 @@
 </head>
 <body>
   <div id="main">
-    <button id="btnClick">Restart</button>
-    <span id="timer"></span>
-    <span id="nextNum"></span>
+    <button id="btnClick">リセット</button><br>
+    <span id="timer">タイム : 0.00秒</span>
+    <span id="nextNum">次の数字 : 1</span>
     <div id="container"></div>
   </div>
 </body>
