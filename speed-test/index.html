@@ -47,6 +47,8 @@
   <script>
     $(document).ready(function(){
       var currentNum = 1;
+      var interval;
+      var elapsedTime;
 
       arrangeGame();
 
@@ -60,6 +62,13 @@
           $(item).html(numArr1.splice(Math.floor(Math.random()*numArr1.length), 1));
         })
         $(".box").click(function() {
+          if (currentNum == 1) {
+            var startTime = Date.now();
+            interval = setInterval(function() {
+              elapsedTime = Date.now() - startTime;
+              $("#timer").html("タイム：" + (elapsedTime/1000).toFixed(3) + "秒");
+            }, 100);
+          }
           if ($(this).html() == currentNum) {
             $(this).html(numArr2.splice(Math.floor(Math.random()*numArr2.length), 1));
             currentNum++;
@@ -67,6 +76,10 @@
             $(this).css("background", "#0E9368");
             if (currentNum > 26) {
               $(this).css("background", "white");
+            }
+            if (currentNum == 51) {
+              clearInterval(interval);
+              alert("タイム：" + (elapsedTime/1000).toFixed(3) + "秒");
             }
           }
         });
@@ -85,7 +98,7 @@
 <body>
   <div id="main">
     <button id="btnClick">リセット</button><br>
-    <span id="timer">タイム : 0.00秒</span>
+    <span id="timer">タイム : 0.000秒</span>
     <span id="nextNum">次の数字 : 1</span>
     <div id="container"></div>
   </div>
