@@ -16,6 +16,8 @@
       text-align: center;
       margin: 10px;
       font-size: 18px;
+      outline: none;
+      cursor: pointer;
     }
     span {
       font-size: 20px;
@@ -41,6 +43,12 @@
     #nextNum {
       float: right;
     }
+    #result, #performance {
+      font-size: 25px;
+    }
+    #result {
+      color: red;
+    }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
@@ -49,10 +57,25 @@
       var currentNum = 1;
       var interval;
       var elapsedTime;
+      var clicked = 0;
+
+      $("#btnClick").click(function() {
+        if (interval) {
+          clearInterval(interval);
+          arrangeGame();
+        }
+      });
 
       arrangeGame();
 
       function arrangeGame() {
+        currentNum = 1;
+        clicked = 0;
+        $("#container").empty();
+        $("#result, #performance").hide();
+        $("#timer, #nextNum, #container").show();
+        $("#timer").html("タイム：0.000秒");
+        $("#nextNum").html("次の数字：" + currentNum);
         for (var i = 1; i <= 25; i++) {
           $("#container").append("<div class='box'></div>");
         }
@@ -62,12 +85,13 @@
           $(item).html(numArr1.splice(Math.floor(Math.random()*numArr1.length), 1));
         })
         $(".box").click(function() {
-          if (currentNum == 1) {
+          if (clicked == 0) {
             var startTime = Date.now();
             interval = setInterval(function() {
               elapsedTime = Date.now() - startTime;
               $("#timer").html("タイム：" + (elapsedTime/1000).toFixed(3) + "秒");
             }, 100);
+            clicked++;
           }
           if ($(this).html() == currentNum) {
             $(this).html(numArr2.splice(Math.floor(Math.random()*numArr2.length), 1));
@@ -79,7 +103,9 @@
             }
             if (currentNum == 51) {
               clearInterval(interval);
-              alert("タイム：" + (elapsedTime/1000).toFixed(3) + "秒");
+              $("#result, #performance").show();
+              $("#timer, #nextNum, #container").hide();
+              $("#result").html("あなたの記録は" + (elapsedTime/1000).toFixed(3) + "秒でした。");
             }
           }
         });
@@ -98,6 +124,16 @@
 <body>
   <div id="main">
     <button id="btnClick">リセット</button><br>
+    <span id="result"></span>
+    <div id="performance">
+      レベル（秒）<br>
+       0 - 20：嘘<br>
+      20 - 30：神<br>
+      30 - 40：達人<br>
+      40 - 50：普通<br>
+      50 - 60：雑魚<br>
+      60以上：問題外<br>
+    </div>
     <span id="timer">タイム : 0.000秒</span>
     <span id="nextNum">次の数字 : 1</span>
     <div id="container"></div>
