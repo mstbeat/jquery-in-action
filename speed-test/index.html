@@ -44,10 +44,16 @@
       float: right;
     }
     #result, #performance {
-      font-size: 25px;
+      font-size: 23px;
     }
     #result {
       color: red;
+      font-weight: bold;
+    }
+    #performance {
+      border: 1px solid black;
+      padding-left: 10px;
+      width: 160px;
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -105,7 +111,27 @@
               clearInterval(interval);
               $("#result, #performance").show();
               $("#timer, #nextNum, #container").hide();
-              $("#result").html("あなたの記録は" + (elapsedTime/1000).toFixed(3) + "秒でした。");
+              $("#result").html("あなたの記録は" + (elapsedTime/1000).toFixed(3) + "秒です。");
+              switch (true) {
+                case elapsedTime/1000 <= 20:
+                  $("#lie").css("color","red");
+                  break;
+                case elapsedTime/1000 > 20 && elapsedTime/1000 <= 30:
+                  $("#god").css("color","red");
+                  break;
+                case elapsedTime/1000 > 30 && elapsedTime/1000 <= 40:
+                  $("#expert").css("color","red");
+                  break;
+                case elapsedTime/1000 > 40 && elapsedTime/1000 <= 50:
+                  $("#normal").css("color","red");
+                  break;
+                case elapsedTime/1000 > 50 && elapsedTime/1000 <= 60:
+                  $("#bad").css("color","red");
+                  break;
+                case elapsedTime/1000 > 60:
+                  $("#ooq").css("color","red");
+                  break;
+              }
             }
           }
         });
@@ -126,13 +152,13 @@
     <button id="btnClick">リセット</button><br>
     <span id="result"></span>
     <div id="performance">
-      レベル（秒）<br>
-       0 - 20：嘘<br>
-      20 - 30：神<br>
-      30 - 40：達人<br>
-      40 - 50：普通<br>
-      50 - 60：雑魚<br>
-      60以上：問題外<br>
+      <span id="level">レベル（秒）</span><br>
+      <span id="lie">0 - 20：嘘</span><br>
+      <span id="god">20 - 30：神</span><br>
+      <span id="expert">30 - 40：達人</span><br>
+      <span id="normal">40 - 50：普通</span><br>
+      <span id="bad">50 - 60：雑魚</span><br>
+      <span id="ooq">60以上：問題外</span><br>
     </div>
     <span id="timer">タイム : 0.000秒</span>
     <span id="nextNum">次の数字 : 1</span>
