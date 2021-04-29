@@ -3,6 +3,12 @@
 <head>
   <title>Click Speed Test</title>
   <style>
+    body {
+      background-image: url("images/background.png");
+      background-color:rgba(255,255,255,0.6);
+      background-blend-mode: lighten;
+      background-size: cover;
+    }
     #main {
       width: 340px;
       height: 400px;
@@ -47,13 +53,11 @@
       font-size: 23px;
     }
     #result {
-      color: red;
       font-weight: bold;
     }
     #performance {
-      border: 1px solid black;
-      padding-left: 10px;
-      width: 160px;
+      width: 350px;
+      height: 350px;
     }
     #rule {
       font-size: 18px;
@@ -109,7 +113,7 @@
             $("#nextNum").html("次の数字 : " + currentNum);
             $(this).css("background", "#0E9368");
             if (currentNum > 26) {
-              $(this).css("background", "white");
+              $(this).css("background", "transparent");
             }
             if (currentNum == 51) {
               clearInterval(interval);
@@ -165,7 +169,7 @@
       <span id="ooq">60以上：問題外</span><br>
     </div>
     <span id="timer">タイム : 0.000秒</span>
-    <span id="nextNum">次の数字 : 1</span>
+    <span id="nextNum">次の数字: 1</span>
     <div id="container"></div>
     <div id="rule">1〜50の数字を順にクリックしよう！</div>
   </div>
