@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    #container {
+      width: 300px;
+      height: 300px;
+      margin: 30px auto;
+    }
+    #timer {
+      margin-bottom: 15px;
+    }
+    span {
+      font-size: 30px;
+    }
+    sub {
+      font-weight: bold;
+    }
+    button {
+      width: 90px;
+      height: 40px;
+      font-size: 25px;
+      border-radius: 5px;
+      border: 1px solid black;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="timer">
+      <span id="hour">00</span><span><sub>h</sub></span>
+      <span id="minute">00</span><span><sub>m</sub></span>
+      <span id="second">00</span><span><sub>s</sub></span>
+      <span id="millisecond">000</span><span><sub>ms</sub></span>
+    </div>
+    <button id="btnClick">Start</button>
+    <button id="btnReset">Reset</button>
+  </div>
+</body>
+</html>
