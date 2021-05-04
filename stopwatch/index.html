@@ -28,8 +28,74 @@
       border-radius: 5px;
       border: 1px solid black;
       margin: 5px;
+      outline: none;
+      cursor: pointer;
     }
   </style>
+  <script>
+    var interval;
+    var timeGap;
+    var clicked = 0;
+
+    $(document).ready(function(){
+      $("#btnReset").click(function(){
+        clicked = 0;
+        if(interval){
+          clearInterval(interval);
+        }
+        displayTime(0,0,0,0);
+        $("#btnClick").html("Start");
+      });
+      $("#btnClick").click(function(){
+        if($(this).html() == "Start"){
+          $(this).html("Stop");
+          if(clicked == 0){
+            updateTime(0);
+          }else{
+            updateTime(timeGap);
+          }
+          clicked++;
+        }else if($(this).html() == "Stop"){
+          clearInterval(interval);
+          $(this).html("Start");
+        }
+      });
+
+      function updateTime(elapsedTime) {
+        var startTime = Date.now();
+        interval = setInterval(function(){
+          timeGap = Date.now() - startTime + elapsedTime;
+          var hours = parseInt(timeGap / 1000 / 60 / 60);
+          if(hours >= 60) {
+            hours %= 60;
+          }
+          var minutes = parseInt(timeGap / 1000 / 60);
+          var seconds = parseInt(timeGap / 1000);
+          if(seconds >= 60){
+            seconds %= 60;
+          }
+          var milliseconds = timeGap;
+          if(milliseconds >= 1000){
+            milliseconds %= 1000;
+          }
+          //console.log(hours + ":" + minutes + ":" + seconds + ":" + milliseconds)
+          displayTime(hours, minutes, seconds, milliseconds);
+        },100)
+      }
+
+      function displayTime(h,m,s,ms){
+        $("#hour").html(addZeroes(h,2));
+        $("#minute").html(addZeroes(m,2));
+        $("#second").html(addZeroes(s,2));
+        $("#millisecond").html(addZeroes(ms,3));
+      }
+
+      function addZeroes(number, digits){
+        var myNum = new String(number);
+        return new Array(digits - myNum.length + 1).join("0") + myNum;
+      }
+    });
+  </script>
 </head>
 <body>
   <div id="container">
