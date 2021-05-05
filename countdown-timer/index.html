@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    #container {
+      width: 300px;
+      height: 300px;
+      margin: 0px auto;
+    }
+    p, span, input {
+      font-family: sans-serif;
+      font-size: 30px;
+    }
+    p {
+      margin-bottom: 0px;
+    }
+    #timer {
+      margin: 10px;
+    }
+    button {
+      width: 90px;
+      height: 40px;
+      font-size: 25px;
+      cursor: pointer;
+      border: 1px solid black;
+      border-radius: 5px;
+      outline: none;
+    }
+    input {
+      border: none;
+      outline: none;
+    }
+    #hours, #seconds {
+      width: 40px;
+    }
+    #minutes {
+      width: 55px;
+    }
+  </style>
+  <script>
+    
+  </script>
+</head>
+<body>
+  <audio id="mySound">
+    <source src="alarm.mp3" type="audio/mpeg">
+  </audio>
+  <div id="container">
+    <p>Set End Time</p>
+    <div id="timer">
+      <input type="text" id="hours" placeholder="hh" maxlength="2"><span>:</span>
+      <input type="text" id="minutes" placeholder="mm" maxlength="2"><span>:</span>
+      <input type="text" id="seconds" placeholder="ss" maxlength="2">
+    </div>
+    <button id="btnClick">Start</button>
+    <button id="btnReset">Reset</button>
+  </div>
+</body>
+</html>
