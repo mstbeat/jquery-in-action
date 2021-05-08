@@ -43,7 +43,27 @@
     }
   </style>
   <script>
-    
+    $(document).ready(function(){
+      $("#btnClick").click(function(){
+        if($(this).html() == "Start"){
+          if($("#hours").val() == "" && $("#minutes").val() == "" && $("#seconds").val() == ""){
+            alert("Enter some value");
+          }else{
+            $(this).html("Stop");
+            $("input").prop("disabled","true");
+            updateTime();
+          }
+        }
+      });
+
+      function updateTime(){
+        var dt = new Date();
+        dt.setHours(dt.getHours() + $("#hours").val());
+        dt.setMinutes(dt.getMinutes() + $("#minutes").val());
+        dt.setSeconds(dt.getSeconds() + $("#seconds").val());
+        var endTime = dt.valueOf();
+      }
+    });
   </script>
 </head>
 <body>
