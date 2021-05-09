@@ -44,6 +44,10 @@
   </style>
   <script>
     $(document).ready(function(){
+      var interval = 0;
+      var timeGap;
+      var hours, minutes, seconds;
+
       $("#btnClick").click(function(){
         if($(this).html() == "Start"){
           if($("#hours").val() == "" && $("#minutes").val() == "" && $("#seconds").val() == ""){
@@ -56,12 +60,36 @@
         }
       });
 
+      function displayTime(timeToDisplay, id){
+        if(timeToDisplay < 10){
+          $(id).val("0" + timeToDisplay);
+        }else{
+          $(id).val(timeToDisplay);
+        }
+      }
+
       function updateTime(){
         var dt = new Date();
-        dt.setHours(dt.getHours() + $("#hours").val());
-        dt.setMinutes(dt.getMinutes() + $("#minutes").val());
-        dt.setSeconds(dt.getSeconds() + $("#seconds").val());
+        dt.setHours(dt.getHours() + +$("#hours").val());
+        dt.setMinutes(dt.getMinutes() + +$("#minutes").val());
+        dt.setSeconds(dt.getSeconds() + +$("#seconds").val());
         var endTime = dt.valueOf();
+
+        interval = setInterval(function(){
+          timeGap = endTime - Date.now();
+          hours = parseInt(timeGap/1000/60/60);
+          displayTime(hours, "#hours");
+          minutes = parseInt(timeGap/1000/60);
+          if(minutes >= 60) {
+            minutes %= 10;
+          }
+          displayTime(minutes, "#minutes");
+          seconds = parseInt(timeGap/1000);
+          if(seconds >= 60) {
+            seconds %= 60;
+          }
+          displayTime(seconds, "#seconds");
+        },1000);
       }
     });
   </script>
