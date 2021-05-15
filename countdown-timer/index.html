@@ -57,8 +57,22 @@
             $("input").prop("disabled","true");
             updateTime();
           }
+        }else if($(this).html() == "Stop"){
+          if(timeGap <= 0){
+            $("#mySound")[0].pause();
+            $("input").prop("disabled",false);
+            displayPlaceHolder();
+          }
+          clearInterval(interval);
+          $(this).html("Start");
         }
       });
+
+      function displayPlaceHolder(){
+        $("#hours").val("").attr("placeholder","hh");
+        $("#minutes").val("").attr("placeholder","mm");
+        $("#seconds").val("").attr("placeholder","ss");
+      }
 
       function displayTime(timeToDisplay, id){
         if(timeToDisplay < 10){
@@ -77,18 +91,23 @@
 
         interval = setInterval(function(){
           timeGap = endTime - Date.now();
-          hours = parseInt(timeGap/1000/60/60);
-          displayTime(hours, "#hours");
-          minutes = parseInt(timeGap/1000/60);
-          if(minutes >= 60) {
-            minutes %= 10;
+          if(timeGap <= 0){
+            $("#mySound")[0].play();
+            $("#mySound").prop("loop", true);
+          } else {
+            hours = parseInt(timeGap/1000/60/60);
+            displayTime(hours, "#hours");
+            minutes = parseInt(timeGap/1000/60);
+            if(minutes >= 60) {
+              minutes %= 60;
+            }
+            displayTime(minutes, "#minutes");
+            seconds = parseInt(timeGap/1000);
+            if(seconds >= 60) {
+              seconds %= 60;
+            }
+            displayTime(seconds, "#seconds");
           }
-          displayTime(minutes, "#minutes");
-          seconds = parseInt(timeGap/1000);
-          if(seconds >= 60) {
-            seconds %= 60;
-          }
-          displayTime(seconds, "#seconds");
         },1000);
       }
     });
