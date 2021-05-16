@@ -48,6 +48,26 @@
       var timeGap;
       var hours, minutes, seconds;
 
+      $("input").keypress(function(evt){
+        evt = (evt) ? evt : window.event;
+        var keyPressed = (evt.which) ? evt.which : evt.keyCode;
+        if(keyPressed > 31 && (keyPressed < 48 || keyPressed > 57)){
+          return false;
+        }else{
+          return true;
+        }
+      });
+
+      $("#btnReset").click(function(){
+        if(interval){
+          clearInterval(interval);
+          $("#mySound")[0].pause();
+          displayPlaceHolder();
+          $("input").prop("disabled",false);
+          $("#btnClick").html("Start");
+        }
+      });
+
       $("#btnClick").click(function(){
         if($(this).html() == "Start"){
           if($("#hours").val() == "" && $("#minutes").val() == "" && $("#seconds").val() == ""){

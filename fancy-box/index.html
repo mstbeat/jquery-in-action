@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Box</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="fancybox/source/jquery.fancybox.js"></script>
+  <link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css">
+  <style>
+    #thumbs {
+      width: 850px;
+      height: 150px;
+      margin: 200px auto;
+    }
+    #thumbs img {
+      width: 150px;
+      height: 150px;
+      border: 2px solid gray;
+      margin: 5px;
+    }
+  </style>
+  <script>
+    var imgArr = [
+      "../reading-position/images/flower1.jpg",
+      "../reading-position/images/flower2.jpg",
+      "../reading-position/images/flower3.jpg",
+      "../reading-position/images/flower4.jpg",
+      "../reading-position/images/flower5.jpg"
+    ];
+
+    $(document).ready(function(){
+      $.each(imgArr,function(index,value){
+        $("#thumbs").append("<a rel='mygallery' class='fancy' href='" + value + "'><img src='" + value + "' /></a>");
+        $(".fancy").fancybox({
+          padding: 0,
+          helpers:{overlay:{css:{'background':'rgba(132,12,125,.5)'}}}
+        });
+      });
+    })
+  </script>
+</head>
+<body>
+  <div id="thumbs"></div>
+</body>
+</html>
